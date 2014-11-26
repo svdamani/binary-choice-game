@@ -41,14 +41,41 @@ CREATE  TABLE IF NOT EXISTS `problems` (
 	PRIMARY KEY (`problem_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS `conditions` (
+/* if suppose the user has not played all the problems of a particular condition
+then this played table will not be able to handle it, which is bad for obvious
+reasons.*/
+
+CREATE TABLE IF NOT EXISTS `used_trials` (
+	`userid` int(11) NOT NULL,
+	`trial_id` int(11) NOT NULL,
+	PRIMARY KEY (`userid`, `trial_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `sg_trials` (
+        `ID` int(11) NOT NULL,
+        `permutation` VARCHAR(545) NOT NULL,
+        PRIMARY KEY  (`permutation`)
+) ;
+
+CREATE TABLE IF NOT EXISTS `used_conditions` (
+        `id` int(11) NOT NULL,
+        `choiceid` int(11) NOT NULL,
+        FOREIGN KEY (`choiceid`) REFERENCES `used_trials`
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `sg_conditions` (
 	`condition_id`     int(11) NOT NULL,
 	`problems` varchar(64) NOT NULL,
 	PRIMARY KEY (`condition_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS `played` (
-	`userid` int(11) NOT NULL,
-	`condition_id` int(11) NOT NULL,
-	PRIMARY KEY (`userid`, `condition_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE IF NOT EXISTS `sg_subjects` (
+        `ID` int(11) NOT NULL,
+        `userid` int(11) NOT NULL ,
+        `trial_played` int(11),
+        `condition` int(11),
+        `chosen_option` int(11),
+        FOREIGN KEY (`userid`) REFERENCES `users`,
+        FOREIGN KEY (`trial_played`) REFERENCES `sg_trials`,
+        FOREIGN KEY (`condition`) REFERENCES `sg_conditions`
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
