@@ -64,9 +64,14 @@ CREATE TABLE IF NOT EXISTS `used_conditions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `sg_conditions` (
-	`condition_id`     int(11) NOT NULL,
-	`problems` varchar(64) NOT NULL,
-	PRIMARY KEY (`condition_id`)
+        `problem_id` int(11) NOT NULL,
+	`p`      float NOT NULL,
+	`w`      float NOT NULL,
+	`x`      float NOT NULL,
+	`q`      float NOT NULL,
+	`y`      float NOT NULL,
+	`z`      float NOT NULL,
+	PRIMARY KEY (`problem_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `sg_subjects` (
