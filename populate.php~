@@ -33,7 +33,7 @@
 			if($k!=6)	$mysql_query = $mysql_query.",";
 		}
         $mysql_query = $mysql_query.")";
-		//echo "\n".$mysql_query."\n" ;
+		echo "\n".$mysql_query."\n" ;
         $result = mysql_query($mysql_query);
         if(!$result) die("Database access failed: ".mysql_error());
     }

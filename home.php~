@@ -15,6 +15,8 @@ if (!isset($_SESSION['loggedin']))
 
 include_once('server.php');
 
+
+
 //echo DB_HOST . DB_USER . DB_PASS ;
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Check connection

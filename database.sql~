@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `signin_log` (
 	`y`      float NOT NULL,
 	`z`      float NOT NULL,
 	PRIMARY KEY (`problem_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;*/
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /* if suppose the user has not played all the problems of a particular condition
 then this played table will not be able to handle it, which is bad for obvious

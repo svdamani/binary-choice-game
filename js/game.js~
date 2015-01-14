@@ -3,7 +3,7 @@ var mode = document.currentScript.getAttribute("data-mode") || "Sampling";
 //var attempts = (mode === "Sampling") ? 10000 : 50;
 
 function Run(id) {
-	//prompt("attempts: " + attempts);
+	prompt("attempts: " + attempts);
 	$_('#safe').innerHTML = (Math.random() < cond[attempts%(cond.length)]["p"]) ? cond[attempts%(cond.length)]["w"] : cond[attempts%(cond.length)]["x"];
 	$_('#risk').innerHTML = (Math.random() < cond[attempts%(cond.length)]["q"]) ? cond[attempts%(cond.length)]["y"] : cond[attempts%(cond.length)]["z"];
 	attempts--;
